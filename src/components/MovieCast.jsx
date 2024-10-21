@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCredits } from "../api";
+import css from './MovieCast.module.css';
 
 
 const MovieCast = () => {
@@ -29,6 +30,7 @@ return (
             <img
               src={`https://image.tmdb.org/t/p/w500${info.profile_path}`}
               alt={info.name}
+              className={css.CastImg}
             />
             <p>{info.name}</p>
             <p>Character: {info.character}</p>

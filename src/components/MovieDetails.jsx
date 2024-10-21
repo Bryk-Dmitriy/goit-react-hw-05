@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchMovieDetails } from '../api';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import css from './MovieDetails.module.css';
 
 
 
@@ -29,17 +30,17 @@ const MovieDetails = ({ id }) => {
     <div>
       <button type='button' onClick={goBack}>Go back</button>
       {movie && (
-        <div>
+        <div className={css.MovieDetailsWrapper}>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
           />
           <div>
-            <h2>{movie.title}</h2>
-            <p>User Score: {Math.round(movie.popularity)}%</p>
-            <h3>Overview</h3>
+            <h2 className={css.CommonInformation}>{movie.title}</h2>
+            <p>User Score: {Math.ceil(movie.popularity)}%</p>
+            <h3 className={css.CommonInformation}>Overview</h3>
             <p>{movie.overview}</p>
-            <h3>Genres</h3>
+            <h3 className={css.CommonInformation}>Genres</h3>
             <ul>
               {movie.genres?.map(item => (
                 <li key={item.id}>{item.name}</li>
@@ -48,12 +49,12 @@ const MovieDetails = ({ id }) => {
           </div>
         </div>
       )}
+      <ul className={css.Additional}>
       <p>Additional information</p>
-      <ul>
-        <li>
+        <li className={css.AddList}>
           <Link state={{ from: location.state?.from }} to={`/movies/${id}/cast`}>Cast</Link>
         </li>
-        <li>
+        <li className={css.AdditionalList}>
           <Link state={{ from: location.state?.from }} to={`/movies/${id}/reviews`}>Reviews</Link>
         </li>
       </ul>
