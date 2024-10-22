@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { fetchMovieDetails } from '../api';
+import { fetchMovieDetails } from '../../api';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
